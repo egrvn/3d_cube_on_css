@@ -1,0 +1,107 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body {
+    height: 100vh;
+    background-color: black;
+    color: black;
+}
+.container {
+    height: 60vh;
+    width: 30vw;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    perspective: 1000px;
+}
+.box {
+    height: 250px;
+    width: 250px;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    transform-style: preserve-3d;
+    animation: animate 5.5s infinite;
+}
+@keyframes animate {
+    0% {
+        transform: rotateX(45deg) rotateY(-60deg);
+    }
+    25% {
+        transform: rotateX(-90deg) rotateY(-60deg);
+    }
+    50% {
+        transform: rotateX(180deg) rotateY(120deg);
+    }
+    75% {
+        transform: rotateX(45deg) rotateY(60deg);
+    }
+    100% {
+        transform: rotateX(45deg) rotateY(-60deg);
+    }
+}
+.cube {
+    height: 250px;
+    width: 250px;
+    text-align: center;
+    padding: 100px 0px;
+    background-color: rgb(78, 7, 211);
+    border: 2px solid black;
+    font-size: 32px;
+    box-sizing: border-box;
+    position: absolute;
+    transition: all 1.5s;
+}
+.left {
+    right: 125px;
+    transform: rotateY(-90deg);
+}
+.right {
+    left: 125px;
+    transform: rotateY(90deg);
+}
+.top {
+    bottom: 125px;
+    transform: rotateX(90deg);
+}
+.bottom {
+    top: 125px;
+    transform: rotateX(90deg);
+}
+.front {
+    transform: translateZ(125px);
+}
+.back {
+    transform: translateZ(-125px);
+}
+.apart {
+    height: 50px;
+    width: 150px;
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    top: -100px;
+    left: 125px;
+}
+.apart:focus~ .box .front {
+    transform: translateZ(-180px) rotateY(360deg);
+}
+.apart:focus~ .box .back {
+    transform: translateZ(180px) rotateY(360deg);
+}
+.apart:focus~ .box .left {
+    right: 180px;
+}
+.apart:focus~ .box .right {
+    left: 180px;
+}
+.apart:focus~ .box .top {
+    bottom: 180px;
+}
+.apart:focus~ .box .bottom {
+    top: 180px;
+}
